@@ -1,0 +1,29 @@
+<div class="container-fluid">
+    <h2 align="center">Edit Employee</h2>
+<form #editemp="ngForm" (ngSubmit)="onSubmit(editemp.value)" ngNativeValidate>
+    <div class="mb-3">   
+                <label class="form-label"> Name:</label>
+                    <input type="text" class="form-control" name="name" minlength="3" maxlength="30" pattern="[a-zA-Z'-'\s]*" ngModel required>
+            </div>
+            <div class="mb-3">   
+                <label class="form-label">   Email:</label>
+                    <input type="email" class="form-control" name="email"  ngModel required>
+            </div>
+            <div class="mb-3">  
+                <label class="form-label">Mobile:</label>
+                    <input type="text" class="form-control" name="mobile" pattern="[1-9]{1}[0-9]{9}" ngModel required>
+            </div>
+            <div class="mb-3">  
+                <label class="form-label">Location:</label>
+                <select class="form-control" [(ngModel)]="selectedOption" name="first">
+                    <option *ngFor="let o of options">
+                        {{o.name}}
+                    </option>
+                </select>   
+            </div> 
+            <div class="mb-3">  
+                <input class="btn btn-primary" type="submit" value="Submit" [disabled]="editemp.form.invalid">
+                <input type="reset" class="btn btn-warning" value="Reset">
+            </div>    
+</form>
+</div>

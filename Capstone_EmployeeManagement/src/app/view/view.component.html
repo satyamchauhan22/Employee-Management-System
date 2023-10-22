@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-center">
+    <label>Filter By:</label>
+     <input type="text" [(ngModel)]="search">
+    </div>
+
+<p>Total Number Of Employees:{{count}}</p>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+<tbody>
+    <tr *ngFor="let e of employeelist | search:search">
+        <td><a [routerLink]="['/details',e.id]">{{e.id}}</a></td>
+        <td>{{e.name}}</td>
+        <td>{{e.location}}</td>
+        <td>{{e.email}}</td>
+        <td>{{e.mobile}}</td>
+        <td><a class="btn btn-outline-warning" [routerLink]="['/edit',e.id]">Edit</a></td>
+        <td><a class="btn btn-outline-danger" [routerLink]="['/delete',e.id]">Delete</a></td>
+
+        <!--<td><button (click)="delete(e.id)">Delete</button></td>-->
+    </tr>
+    <tbody>
+
+</table>
